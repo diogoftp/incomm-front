@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Row, Col, Divider, Table, Tag, Spin, Typography, Descriptions } from 'antd';
-import { MessageOutlined, DollarCircleOutlined, CalendarOutlined, CreditCardOutlined } from '@ant-design/icons';
+import React, { useEffect } from 'react';
+import { Row, Col, Divider, Table, Tag, Spin, Typography } from 'antd';
+import { MessageOutlined, DollarCircleOutlined, CalendarOutlined } from '@ant-design/icons';
 import { colorNumber } from '../../utils/printStyle';
 import CardInfos from '../../components/cardInfos';
 import giftCard from '../../giftCard.svg';
