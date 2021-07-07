@@ -1,40 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Spin, Table, Tag } from 'antd';
-import { ITransaction, TransactionTypes } from './interfaces';
+import { message, Spin, Table, Tag } from 'antd';
 import { ColumnsType } from 'antd/lib/table/interface';
+import { ITransaction, TransactionTypes } from './interfaces';
 import { tableColorNumber } from '../../utils/printStyle';
-
-const data = [
-  {
-    key: '1',
-    type: TransactionTypes.withdrawl,
-    date: '06/07/2021',
-    value: 500,
-    identification: 'E-Commerce'
-  },
-  {
-    key: '2',
-    type: TransactionTypes.activation,
-    date: '05/07/2021',
-    value: -100,
-    identification: 'Loja Shopping'
-  },
-  {
-    key: '3',
-    type: TransactionTypes.cancellation,
-    date: '22/06/2021',
-    value: -100,
-    identification: 'Loja Shopping'
-  }
-];
+import api from '../../services/api';
 
 const CardTransactions = (): JSX.Element => {
   const [loadingTransactions, setLoadingTransactions] = useState<boolean>(true);
   const [transactionsData, setTransactionsData] = useState<Array<ITransaction> | undefined>(undefined);
 
   useEffect(() => {
-    setTransactionsData(data);
-    setLoadingTransactions(false);
+    api.get('/transactions').then((response: any) => {
+      if (response && response.success) {
+        setTransactionsData(response.data.transactions_data);
+      }
+      else {
+        if (response && response.message) message.error(response.message);
+      }
+      setLoadingTransactions(false);
+    });
   }, []);
 
   const transactionsCol: ColumnsType<ITransaction> = [
@@ -45,22 +29,26 @@ const CardTransactions = (): JSX.Element => {
       filters: [
         {
           text: TransactionTypes.activation,
-          value: TransactionTypes.activation,
+          value: TransactionTypes.activation
         },
         {
           text: TransactionTypes.recharge,
-          value: TransactionTypes.recharge,
+          value: TransactionTypes.recharge
         },
         {
           text: TransactionTypes.withdrawl,
-          value: TransactionTypes.withdrawl,
+          value: TransactionTypes.withdrawl
         },
         {
           text: TransactionTypes.cancellation,
-          value: TransactionTypes.cancellation,
-        },
+          value: TransactionTypes.cancellation
+        }
       ],
       onFilter: (value: string | number | boolean, record: ITransaction) => record.type === value,
+      // TODO: resolve type issue
+      //render: (text: TransactionTypes) => Object.values(TransactionTypes).includes(text) ? TransactionTypes[text as TransactionTypes] : '-'
+      //render: (text: TransactionTypes) => TransactionTypes[text]
+      render: (text: TransactionTypes) => text
     },
     {
       title: 'Data da transação',
@@ -73,15 +61,15 @@ const CardTransactions = (): JSX.Element => {
       dataIndex: 'value',
       key: 'value',
       sorter: {
-        compare: (a: ITransaction, b: ITransaction) => a.value - b.value,
+        compare: (a: ITransaction, b: ITransaction) => a.value - b.value
       },
-      render: (text: number) => tableColorNumber(text),
+      render: (text: number) => tableColorNumber(text)
     },
     {
       title: 'Identificação',
       dataIndex: 'identification',
       key: 'identification',
-      render: (text: string) => text ? (<Tag>{text}</Tag>) : '-',
+      render: (text: string) => text ? (<Tag>{text}</Tag>) : '-'
     },
   ];
 

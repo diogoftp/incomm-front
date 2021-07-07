@@ -41,7 +41,7 @@ const CardData = (): JSX.Element => {
     cardNumber = '-';
   }
   return (
-    <Spin spinning={!cardData}>
+    <Spin spinning={!cardData} size="large">
       <CardImage>{cardNumber}</CardImage>
       <ul>
         <CardInfos icon={<MessageOutlined style={{ fontSize: '25px', padding: '1em' }} />} title="Mensagem do Presente" text={cardMessage} />

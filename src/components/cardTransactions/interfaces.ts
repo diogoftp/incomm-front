@@ -6,7 +6,7 @@ export enum TransactionTypes {
 }
 
 export interface ITransaction {
-  key: string,
+  key: number,
   type: TransactionTypes,
   date: string,
   value: number,
