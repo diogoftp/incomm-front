@@ -2,8 +2,7 @@ import axios from 'axios';
 import { getToken } from './auth';
 import { message } from 'antd';
 
-//export const API_URL = process.env.REACT_APP_API_URL;
-export const API_URL = 'http://localhost:5002/api';
+export const API_URL: string | undefined = process.env.REACT_APP_API_URL;
 
 const api = axios.create({
   baseURL: API_URL
