@@ -7,13 +7,13 @@ import { setToken } from '../../services/auth';
 const Login = (props: any): JSX.Element => {
   const onFinish = (values: { card_number: string, password: string }) => {
     api.post('/login', values).then((response: any) => {
-      if (response.data && response.data.success) {
-        setToken(response.data.data.token);
+      if (response && response.success) {
+        setToken(response.data.token);
         props.history.push('/');
-        message.success(response.data.message);
+        message.success(response.message);
       }
       else {
-        if (response.data && response.data.message) message.warning(response.data.message);
+        if (response && response.message) message.warning(response.message);
       }
     });
   }

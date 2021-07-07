@@ -1,0 +1,37 @@
+.topMenu {
+  height: 50px;
+  background-color: #333;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.topMenu button {
+  float: left;
+  color: #f2f2f2;
+  padding: 25px 25px 25px 25px;
+  text-decoration: none;
+  background: inherit;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.topMenu span {
+  float: left;
+  color: #f2f2f2;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.topMenu button:hover {
+  background: #ddd;
+  color: black;
+}
+
+.topMenu button.active {
+  background: #04AA6D;
+  color: white;
+}

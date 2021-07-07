@@ -30,7 +30,7 @@
 
 .main-container-2 {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 50px);
   padding: 20px;
   background: aliceblue;
 }
@@ -49,10 +49,10 @@
 }
 .login-btn {
   display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
