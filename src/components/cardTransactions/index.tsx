@@ -24,27 +24,27 @@ const CardTransactions = (): JSX.Element => {
   const transactionsCol: ColumnsType<ITransaction> = [
     {
       title: 'Tipo da transação',
-      dataIndex: 'type',
-      key: 'type',
+      dataIndex: 'transaction_type',
+      key: 'transaction_type',
       filters: [
         {
           text: TransactionTypes.activation,
           value: TransactionTypes.activation
         },
         {
-          text: TransactionTypes.recharge,
-          value: TransactionTypes.recharge
+          text: TransactionTypes.reload,
+          value: TransactionTypes.reload
         },
         {
-          text: TransactionTypes.withdrawl,
-          value: TransactionTypes.withdrawl
+          text: TransactionTypes.redeem,
+          value: TransactionTypes.redeem
         },
         {
           text: TransactionTypes.cancellation,
           value: TransactionTypes.cancellation
         }
       ],
-      onFilter: (value: string | number | boolean, record: ITransaction) => record.type === value,
+      onFilter: (value: string | number | boolean, record: ITransaction) => record.transaction_type === value,
       // TODO: resolve type issue
       //render: (text: TransactionTypes) => Object.values(TransactionTypes).includes(text) ? TransactionTypes[text as TransactionTypes] : '-'
       //render: (text: TransactionTypes) => TransactionTypes[text]
@@ -52,23 +52,23 @@ const CardTransactions = (): JSX.Element => {
     },
     {
       title: 'Data da transação',
-      dataIndex: 'date',
-      key: 'date',
-      sorter: (a: ITransaction, b: ITransaction) => new Date(a.date) > new Date(b.date) ? 1 : -1
+      dataIndex: 'transaction_date',
+      key: 'transaction_date',
+      sorter: (a: ITransaction, b: ITransaction) => new Date(a.transaction_date) > new Date(b.transaction_date) ? 1 : -1
     },
     {
       title: 'Valor',
-      dataIndex: 'value',
-      key: 'value',
+      dataIndex: 'transaction_value',
+      key: 'transaction_value',
       sorter: {
-        compare: (a: ITransaction, b: ITransaction) => a.value - b.value
+        compare: (a: ITransaction, b: ITransaction) => a.transaction_value - b.transaction_value
       },
       render: (text: number) => tableColorNumber(text)
     },
     {
       title: 'Identificação',
-      dataIndex: 'identification',
-      key: 'identification',
+      dataIndex: 'store_identification',
+      key: 'store_identification',
       render: (text: string) => text ? (<Tag>{text}</Tag>) : '-'
     },
   ];

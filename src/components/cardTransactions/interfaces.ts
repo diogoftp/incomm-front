@@ -1,14 +1,14 @@
 export enum TransactionTypes {
   activation = 'Ativação',
-  recharge = 'Recarga',
-  withdrawl = 'Resgate',
+  reload = 'Recarga',
+  redeem = 'Resgate',
   cancellation = 'Cancelamento'
 }
 
 export interface ITransaction {
   key: number,
-  type: TransactionTypes,
-  date: string,
-  value: number,
-  identification: string
+  transaction_type: TransactionTypes,
+  transaction_date: string,
+  transaction_value: number,
+  store_identification: string
 }
