@@ -16,6 +16,7 @@
   font-size: 15px;
   border: none;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .topMenu span {
@@ -29,9 +30,4 @@
 .topMenu button:hover {
   background: #ddd;
   color: black;
-}
-
-.topMenu button.active {
-  background: #04AA6D;
-  color: white;
 }

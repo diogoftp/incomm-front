@@ -2,7 +2,7 @@ import React from 'react';
 
 const CardInfos = (props: { icon: JSX.Element, title: string, text: string }): JSX.Element => {
   return (
-    <li>
+    <li style={{ listStyleType: 'none' }}>
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
         {props.icon}
         <div style={{ display: 'flex', flexDirection: 'column' }}>

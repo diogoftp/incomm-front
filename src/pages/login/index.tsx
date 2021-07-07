@@ -3,6 +3,7 @@ import { Row, Col, Form, Input, Button, Divider, message } from 'antd';
 import { CreditCardOutlined, LockOutlined } from '@ant-design/icons';
 import api from '../../services/api';
 import { setToken } from '../../services/auth';
+import './style.css';
 
 const Login = (props: any): JSX.Element => {
   const onFinish = (values: { card_number: string, password: string }) => {
@@ -28,8 +29,8 @@ const Login = (props: any): JSX.Element => {
   }
 
   return (
-    <div className="main-container">
-      <div className="container">
+    <div className="login-container-wrapper">
+      <div className="login-container">
         <Row>
           <Col span={24}>
             <Divider>Login</Divider>

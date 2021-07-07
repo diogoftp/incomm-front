@@ -4,7 +4,6 @@ import { MessageOutlined, DollarCircleOutlined, CalendarOutlined } from '@ant-de
 import { colorNumber } from '../../utils/printStyle';
 import CardInfos from '../../components/cardInfos';
 import giftCard from '../../giftCard.svg';
-import './style.css';
 import { ColumnsType } from 'antd/lib/table/interface';
 import { ITransaction } from './interfaces';
 
@@ -74,13 +73,13 @@ const Info = (): JSX.Element => {
   ];
 
   return (
-    <div className="main-container-2">
-      <div className="container-wrapper">
+    <div className="container-wrapper">
+      <div className="container">
         <Row>
           <Col sm={24} md={6} style={{ padding: '1em' }}>
             <Typography.Title style={{ textAlign: 'center' }}>Meu Gift Card</Typography.Title>
             <img src={giftCard} style={{ width: '100%' }} alt="gift card"></img>
-            <ul className="dotless-list">
+            <ul>
               <CardInfos icon={<MessageOutlined style={{ fontSize: '25px', padding: '1em' }} />} title="Mensagem do Presente" text="Mensagem" />
               <CardInfos icon={<DollarCircleOutlined style={{ fontSize: '25px', padding: '1em' }} />} title="Saldo" text="Mensagem" />
               <CardInfos icon={<CalendarOutlined style={{ fontSize: '25px', padding: '1em' }} />} title="Validade" text="Mensagem" />
