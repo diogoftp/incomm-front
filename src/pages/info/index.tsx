@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Row, Col, Divider, Table, Tag, Spin, Typography, TableProps } from 'antd';
+import { Row, Col, Divider, Table, Tag, Spin, Typography } from 'antd';
 import { MessageOutlined, DollarCircleOutlined, CalendarOutlined } from '@ant-design/icons';
 import { colorNumber } from '../../utils/printStyle';
 import CardInfos from '../../components/cardInfos';
@@ -79,7 +79,7 @@ const Info = (): JSX.Element => {
         <Row>
           <Col sm={24} md={6} style={{ padding: '1em' }}>
             <Typography.Title style={{ textAlign: 'center' }}>Meu Gift Card</Typography.Title>
-            <img src={giftCard} style={{ width: '100%' }}></img>
+            <img src={giftCard} style={{ width: '100%' }} alt="gift card"></img>
             <ul className="dotless-list">
               <CardInfos icon={<MessageOutlined style={{ fontSize: '25px', padding: '1em' }} />} title="Mensagem do Presente" text="Mensagem" />
               <CardInfos icon={<DollarCircleOutlined style={{ fontSize: '25px', padding: '1em' }} />} title="Saldo" text="Mensagem" />

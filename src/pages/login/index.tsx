@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Row, Col, Form, Input, Button, Divider, message } from 'antd';
 import { CreditCardOutlined, LockOutlined } from '@ant-design/icons';
 import api from '../../services/api';

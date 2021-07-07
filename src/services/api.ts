@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { message } from 'antd';
 import { getToken } from './auth';
 
 //export const API_URL = process.env.REACT_APP_API_URL;
