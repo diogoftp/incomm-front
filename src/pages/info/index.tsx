@@ -22,6 +22,13 @@ const data = [
     date: '05/07/2021',
     value: -100,
     identification: 'Loja Shopping'
+  },
+  {
+    key: '3',
+    type: 'Ativação',
+    date: '22/06/2021',
+    value: -100,
+    identification: 'Loja Shopping'
   }
 ];
 
@@ -66,7 +73,8 @@ const Info = (): JSX.Element => {
     {
       title: 'Data da transação',
       dataIndex: 'date',
-      key: 'date'
+      key: 'date',
+      sorter: (a: ITransaction, b: ITransaction) => new Date(a.date) > new Date(b.date) ? 1 : -1
     },
     {
       title: 'Valor',
@@ -120,7 +128,7 @@ const Info = (): JSX.Element => {
           <Col sm={24} md={17} style={{ padding: '1em' }}>
             <Divider>Transações</Divider>
             <Spin spinning={loadingTransactions}>
-              <Table dataSource={transactionsData} columns={transactionsCol} pagination={{ position: ['bottomCenter'] }} />
+              <Table rowKey='key' dataSource={transactionsData} columns={transactionsCol} pagination={{ position: ['bottomCenter'] }} />
             </Spin>
           </Col>
         </Row>
