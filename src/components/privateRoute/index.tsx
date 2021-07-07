@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { isAuthenticated } from '../../services/auth';
+import { message } from 'antd';
 import { Redirect, Route } from 'react-router-dom';
 import { IPrivateRoute } from './interfaces';
-import api from '../../services/api';
-import { message } from 'antd';
 import UserMenu from '../userMenu';
+import { isAuthenticated } from '../../services/auth';
+import api from '../../services/api';
 
 const PrivateRoute = (props: IPrivateRoute): JSX.Element | null => {
   const [authenticated, setAuthenticated] = useState<any>(false);
   const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    let isMounted = true;
+    let isMounted: boolean = true;
     if (isAuthenticated()) {
       api.get('/token/refresh').then((response: any) => {
         if (!isMounted) return;

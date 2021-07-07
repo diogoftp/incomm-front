@@ -2,10 +2,10 @@ import {
   BrowserRouter as Router,
   Switch, Route
 } from 'react-router-dom';
-import './App.css';
 import Login from './pages/login';
 import Info from './pages/info';
 import PrivateRoute from './components/privateRoute';
+import './App.css';
 
 function App() {
   return (

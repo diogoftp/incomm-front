@@ -1,8 +1,8 @@
 import React from 'react';
 import { message } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { removeToken } from '../../services/auth';
 import { useHistory } from 'react-router-dom';
+import { removeToken } from '../../services/auth';
 import './style.css';
 
 const UserMenu = (): JSX.Element => {
