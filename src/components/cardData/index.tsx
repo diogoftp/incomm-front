@@ -29,7 +29,7 @@ const CardData = (): JSX.Element => {
   if (cardData) {
     balanceColor = colorFromNumber(cardData.balance);
     cardMessage = cardData.message;
-    cardBalance = 'R$ ' + cardData.balance.toLocaleString('pt-br');
+    cardBalance = 'R$ ' + cardData.balance.toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     cardExpiration = cardData.expiration;
     cardNumber = cardData.number.toString();
   }

@@ -44,12 +44,20 @@ const CardTransactions = (): JSX.Element => {
       key: 'type',
       filters: [
         {
-          text: 'Resgate',
-          value: 'Resgate',
+          text: TransactionTypes.activation,
+          value: TransactionTypes.activation,
         },
         {
-          text: 'Ativação',
-          value: 'Ativação',
+          text: TransactionTypes.recharge,
+          value: TransactionTypes.recharge,
+        },
+        {
+          text: TransactionTypes.withdrawl,
+          value: TransactionTypes.withdrawl,
+        },
+        {
+          text: TransactionTypes.cancellation,
+          value: TransactionTypes.cancellation,
         },
       ],
       onFilter: (value: string | number | boolean, record: ITransaction) => record.type === value,

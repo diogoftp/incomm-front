@@ -7,7 +7,7 @@ export function tableColorNumber(number: number) {
     props: {
       style: { color: color }
     },
-    children: 'R$ ' + number
+    children: 'R$ ' + number.toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
   }
 }
 
