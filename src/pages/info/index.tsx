@@ -1,18 +1,12 @@
 import React, { useEffect } from 'react';
-import { Row, Col, Divider, Table, Tag, Spin, Typography } from 'antd';
+import { Row, Col, Divider, Table, Tag, Spin, Typography, TableProps } from 'antd';
 import { MessageOutlined, DollarCircleOutlined, CalendarOutlined } from '@ant-design/icons';
 import { colorNumber } from '../../utils/printStyle';
 import CardInfos from '../../components/cardInfos';
 import giftCard from '../../giftCard.svg';
 import './style.css';
-
-interface ITransaction {
-  key: string,
-  type: string,
-  date: string,
-  value: number,
-  identification: string
-}
+import { ColumnsType } from 'antd/lib/table/interface';
+import { ITransaction } from './interfaces';
 
 const data = [
   {
@@ -40,7 +34,7 @@ const Info = (): JSX.Element => {
     setLoadingTransactions(false);
   }, []);
 
-  const transactionsCol: any = [
+  const transactionsCol: ColumnsType<ITransaction> = [
     {
       title: 'Tipo da transação',
       dataIndex: 'type',
@@ -55,15 +49,12 @@ const Info = (): JSX.Element => {
           value: 'Ativação',
         },
       ],
-      onFilter: (value: string, record: ITransaction) => record.type === value,
+      onFilter: (value: any, record: ITransaction) => record.type === value,
     },
     {
       title: 'Data da transação',
       dataIndex: 'date',
-      key: 'date',
-      sorter: {
-        compare: (a: ITransaction, b: ITransaction) => a.date < b.date,
-      },
+      key: 'date'
     },
     {
       title: 'Valor',

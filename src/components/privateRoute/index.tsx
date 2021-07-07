@@ -1,11 +1,6 @@
 import { isAuthenticated } from '../../services/auth';
 import { Redirect, Route } from 'react-router-dom';
-
-interface IPrivateRoute {
-  path: string,
-  component: any,
-  exact?: boolean
-}
+import { IPrivateRoute } from './interfaces';
 
 const PrivateRoute = (props: IPrivateRoute): JSX.Element => {
   if (isAuthenticated()) return <Route {...props} />
