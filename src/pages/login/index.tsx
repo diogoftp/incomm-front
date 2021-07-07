@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Form, Input, Button, Divider } from 'antd';
+import { Row, Col, Form, Input, Button, Divider, message } from 'antd';
 import { CreditCardOutlined, LockOutlined } from '@ant-design/icons';
+import api from '../../services/api';
+import { setToken } from '../../services/auth';
 
-const Login = (): JSX.Element => {
+const Login = (props: any): JSX.Element => {
   const onFinish = (values: { card_number: string, password: string }) => {
-    console.log(values);
+    api.post('/login', values).then((response: any) => {
+      if (response.data && response.data.success) {
+        setToken(response.data.data.token);
+        props.history.push('/');
+        message.success(response.data.message);
+      }
+      else {
+        if (response.data && response.data.message) message.warning(response.data.message);
+      }
+    });
   }
 
   const validateInput = (event: React.KeyboardEvent, regex: string) => {
