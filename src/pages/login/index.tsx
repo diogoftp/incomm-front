@@ -17,7 +17,7 @@ const Login = (props: any): JSX.Element => {
         message.success(response.message);
       }
       else {
-        if (response && response.message) message.warning(response.message);
+        if (response && response.message) message.error(response.message);
       }
     });
   }

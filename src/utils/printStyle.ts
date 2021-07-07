@@ -1,4 +1,4 @@
-export function colorNumber(number: number) {
+export function tableColorNumber(number: number) {
   if (number === null || number === undefined) {
     return '-';
   }
@@ -9,4 +9,12 @@ export function colorNumber(number: number) {
     },
     children: 'R$ ' + number
   }
+}
+
+export function colorFromNumber(number: number) {
+  if (number === null || number === undefined) {
+    return '-';
+  }
+  if (number < 0) return 'red';
+  return 'green';
 }

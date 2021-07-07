@@ -5,3 +5,10 @@ export interface ITransaction {
   value: number,
   identification: string
 }
+
+export interface ICardData {
+  number: number,
+  message: string,
+  balance: number,
+  expiration: string
+}
