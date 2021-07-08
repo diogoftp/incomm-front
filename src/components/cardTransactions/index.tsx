@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { message, Spin, Table, Tag } from 'antd';
 import { ColumnsType } from 'antd/lib/table/interface';
-import { ITransaction, TransactionTypes } from './interfaces';
+import { ITransaction, TRANSACTION_TYPES, TransactionTypes } from './interfaces';
 import { tableColorNumber } from '../../utils/printStyle';
 import api from '../../services/api';
 
@@ -31,27 +31,24 @@ const CardTransactions = (props: {origin: 'internal' | 'external'}): JSX.Element
       key: 'transaction_type',
       filters: [
         {
-          text: TransactionTypes.activation,
-          value: TransactionTypes.activation
+          text: TRANSACTION_TYPES.activation,
+          value: TRANSACTION_TYPES.activation
         },
         {
-          text: TransactionTypes.reload,
-          value: TransactionTypes.reload
+          text: TRANSACTION_TYPES.reload,
+          value: TRANSACTION_TYPES.reload
         },
         {
-          text: TransactionTypes.redeem,
-          value: TransactionTypes.redeem
+          text: TRANSACTION_TYPES.redeem,
+          value: TRANSACTION_TYPES.redeem
         },
         {
-          text: TransactionTypes.cancellation,
-          value: TransactionTypes.cancellation
+          text: TRANSACTION_TYPES.cancellation,
+          value: TRANSACTION_TYPES.cancellation
         }
       ],
       onFilter: (value: string | number | boolean, record: ITransaction) => record.transaction_type === value,
-      // TODO: resolve type issue
-      //render: (text: TransactionTypes) => Object.values(TransactionTypes).includes(text) ? TransactionTypes[text as TransactionTypes] : '-'
-      //render: (text: TransactionTypes) => TransactionTypes[text]
-      render: (text: TransactionTypes) => text
+      render: (text: TRANSACTION_TYPES) => TransactionTypes[text]
     },
     {
       title: 'Data da transação',
