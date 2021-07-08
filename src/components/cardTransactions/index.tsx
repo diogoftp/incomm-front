@@ -5,12 +5,15 @@ import { ITransaction, TransactionTypes } from './interfaces';
 import { tableColorNumber } from '../../utils/printStyle';
 import api from '../../services/api';
 
-const CardTransactions = (): JSX.Element => {
+const CardTransactions = (props: {origin: 'internal' | 'external'}): JSX.Element => {
   const [loadingTransactions, setLoadingTransactions] = useState<boolean>(true);
   const [transactionsData, setTransactionsData] = useState<Array<ITransaction> | undefined>(undefined);
 
   useEffect(() => {
-    api.get('/transactions').then((response: any) => {
+    let endpoint: string;
+    if (props.origin === 'external') endpoint = '/transactions/external';
+    else endpoint = '/transactions';
+    api.get(endpoint).then((response: any) => {
       if (response && response.success) {
         setTransactionsData(response.data.transactions_data);
       }
@@ -19,7 +22,7 @@ const CardTransactions = (): JSX.Element => {
       }
       setLoadingTransactions(false);
     });
-  }, []);
+  }, [props.origin]);
 
   const transactionsCol: ColumnsType<ITransaction> = [
     {
