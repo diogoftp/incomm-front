@@ -1,0 +1,11 @@
+version: "3"
+services:
+  webserver:
+    container_name: webserver
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5002/api
