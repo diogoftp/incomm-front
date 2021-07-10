@@ -2,7 +2,12 @@ import axios from 'axios';
 import { getToken } from './auth';
 import { message } from 'antd';
 
-export const API_URL: string | undefined = process.env.REACT_APP_API_URL;
+const protocol: string = window.location.protocol;
+const hostname: string = window.location.hostname;
+const apiPort: string = '5002'
+const apiBase: string = '/api'
+
+export const API_URL: string = protocol +'//' + hostname + ':' + apiPort + apiBase;
 
 const api = axios.create({
   baseURL: API_URL
