@@ -5,7 +5,7 @@ import { ITransaction, TRANSACTION_TYPES, TransactionTypes } from './interfaces'
 import { tableColorNumber } from '../../utils/printStyle';
 import api from '../../services/api';
 
-const CardTransactions = (props: {origin: 'internal' | 'external'}): JSX.Element => {
+const CardTransactions = (props: { origin: 'internal' | 'external' }): JSX.Element => {
   const [loadingTransactions, setLoadingTransactions] = useState<boolean>(true);
   const [transactionsData, setTransactionsData] = useState<Array<ITransaction> | undefined>(undefined);
 
@@ -75,7 +75,7 @@ const CardTransactions = (props: {origin: 'internal' | 'external'}): JSX.Element
 
   return (
     <Spin spinning={loadingTransactions}>
-      <Table rowKey="key" dataSource={transactionsData} columns={transactionsCol} pagination={{ position: ['bottomCenter'] }} />
+      <Table rowKey="key" dataSource={transactionsData} columns={transactionsCol} pagination={{ position: ['bottomCenter'] }} scroll={{ x: 400 }} />
     </Spin>
   );
 }
