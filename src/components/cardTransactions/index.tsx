@@ -10,10 +10,12 @@ const CardTransactions = (props: { origin: 'internal' | 'external' }): JSX.Eleme
   const [transactionsData, setTransactionsData] = useState<Array<ITransaction> | undefined>(undefined);
 
   useEffect(() => {
+    let isMounted: boolean = true;
     let endpoint: string;
     if (props.origin === 'external') endpoint = '/transactions/external';
     else endpoint = '/transactions';
     api.get(endpoint).then((response: any) => {
+      if (!isMounted) return;
       if (response && response.success) {
         setTransactionsData(response.data.transactions_data);
       }
@@ -22,6 +24,7 @@ const CardTransactions = (props: { origin: 'internal' | 'external' }): JSX.Eleme
       }
       setLoadingTransactions(false);
     });
+    return () => { isMounted = false }
   }, [props.origin]);
 
   const transactionsCol: ColumnsType<ITransaction> = [
@@ -75,7 +78,7 @@ const CardTransactions = (props: { origin: 'internal' | 'external' }): JSX.Eleme
 
   return (
     <Spin spinning={loadingTransactions}>
-      <Table rowKey="key" dataSource={transactionsData} columns={transactionsCol} pagination={{ position: ['bottomCenter'] }} scroll={{ x: 400 }} />
+      <Table rowKey="key" dataSource={transactionsData} columns={transactionsCol} pagination={{ position: ['bottomCenter'], defaultPageSize: 10 }} scroll={{ x: 400 }} />
     </Spin>
   );
 }

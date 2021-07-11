@@ -11,7 +11,9 @@ const CardData = (): JSX.Element => {
   const [cardData, setCardData] = useState<ICardData | null>(null);
 
   useEffect(() => {
+    let isMounted: boolean = true;
     api.get('/info').then((response: any) => {
+      if (!isMounted) return;
       if (response && response.success) {
         setCardData(response.data.card_data);
       }
@@ -19,6 +21,7 @@ const CardData = (): JSX.Element => {
         if (response && response.message) message.error(response.message);
       }
     });
+    return () => { isMounted = false }
   }, []);
 
   let balanceColor: string;
