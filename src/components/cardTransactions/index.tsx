@@ -32,19 +32,19 @@ const CardTransactions = (props: { origin: 'internal' | 'external' }): JSX.Eleme
       filters: [
         {
           text: TRANSACTION_TYPES.activation,
-          value: TRANSACTION_TYPES.activation
+          value: 'activation'
         },
         {
           text: TRANSACTION_TYPES.reload,
-          value: TRANSACTION_TYPES.reload
+          value: 'reload'
         },
         {
           text: TRANSACTION_TYPES.redeem,
-          value: TRANSACTION_TYPES.redeem
+          value: 'redeem'
         },
         {
           text: TRANSACTION_TYPES.cancellation,
-          value: TRANSACTION_TYPES.cancellation
+          value: 'cancellation'
         }
       ],
       onFilter: (value: string | number | boolean, record: ITransaction) => record.transaction_type === value,
