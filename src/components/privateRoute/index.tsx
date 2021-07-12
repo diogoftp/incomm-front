@@ -6,10 +6,15 @@ import UserMenu from '../userMenu';
 import { isAuthenticated } from '../../services/auth';
 import api from '../../services/api';
 
+
+/**
+ * Component for restricting access to protected routes.
+ */
 const PrivateRoute = (props: IPrivateRoute): JSX.Element | null => {
   const [authenticated, setAuthenticated] = useState<any>(false);
   const [loaded, setLoaded] = useState<boolean>(false);
 
+  /** Refresh and validate user's token when component mounts */
   useEffect(() => {
     let isMounted: boolean = true;
     if (isAuthenticated()) {

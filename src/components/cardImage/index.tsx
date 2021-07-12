@@ -1,6 +1,12 @@
 import React from 'react';
 
-const CardImage = (props: { children: string }): JSX.Element => {
+/**
+ * Component for displaying Gift Card image with its number.
+ */
+const CardImage = (props: {
+  /** Card number that goes inside the svg */
+  children: string
+}): JSX.Element => {
   return (
     <svg viewBox="0 0 455 455" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlSpace="preserve">
       <g>

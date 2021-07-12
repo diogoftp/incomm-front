@@ -5,10 +5,19 @@ import api from '../../services/api';
 import { setToken } from '../../services/auth';
 import './style.css';
 
+
+/**
+* Login page.
+*/
 const Login = (props: any): JSX.Element => {
   const [cardTooltipVisible, setCardTooltipVisible] = useState<boolean>(false);
   const [passwordTooltipVisible, setPasswordTooltipVisible] = useState<boolean>(false);
 
+  /**
+   * Send login form data to the API.
+   *
+   * @param {object} values
+   */
   const onFinish = (values: { card_number: string, password: string }) => {
     api.post('/login', values).then((response: any) => {
       if (response && response.success) {
@@ -22,6 +31,13 @@ const Login = (props: any): JSX.Element => {
     });
   }
 
+  /**
+   * Ignore keypresses that are not accepted in the inputs.
+   *
+   * @param {React.KeyboardEvent} event
+   * @param {string} regex
+   * @param {string} target
+   */
   const validateInput = (event: React.KeyboardEvent, regex: string, target: string) => {
     const allowedChars = new RegExp(regex);
     let pressedKey = event.key;

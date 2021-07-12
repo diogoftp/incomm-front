@@ -7,9 +7,13 @@ import { colorFromNumber } from '../../utils/printStyle';
 import CardInfos from '../cardInfos';
 import CardImage from '../cardImage';
 
+/**
+ * Component for displaying Gift Card data.
+ */
 const CardData = (): JSX.Element => {
   const [cardData, setCardData] = useState<ICardData | null>(null);
 
+  /*** Fetch data from API when component mounts */
   useEffect(() => {
     let isMounted: boolean = true;
     api.get('/info').then((response: any) => {

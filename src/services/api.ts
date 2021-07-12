@@ -2,6 +2,7 @@ import axios from 'axios';
 import { getToken } from './auth';
 import { message } from 'antd';
 
+/** API will always be in the same domain of the website, but on port 5002 */
 const protocol: string = window.location.protocol;
 const hostname: string = window.location.hostname;
 const apiPort: string = '5002'
@@ -13,6 +14,7 @@ const api = axios.create({
   baseURL: API_URL
 });
 
+/** Add JWT token (if authenticated) on every request header */
 api.interceptors.request.use(async config => {
   const token = getToken();
   if (token) {
@@ -21,6 +23,7 @@ api.interceptors.request.use(async config => {
   return config;
 });
 
+/** Intercept common responses for default error handling */
 api.interceptors.response.use((response) => {
   if (response) {
     return response.data;

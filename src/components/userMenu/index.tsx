@@ -5,6 +5,10 @@ import { useHistory } from 'react-router-dom';
 import { removeToken } from '../../services/auth';
 import './style.css';
 
+
+/**
+ * Component for the top navigation menu.
+ */
 const UserMenu = (): JSX.Element => {
   const history = useHistory();
 

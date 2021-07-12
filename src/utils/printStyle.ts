@@ -1,3 +1,8 @@
+/**
+ * Returns an object with color depending on whether the number is positive or negative and toLocaleString formated number.
+ *
+ * @param {number} number
+ */
 export function tableColorNumber(number: number) {
   if (number === null || number === undefined) {
     return '-';
@@ -11,6 +16,11 @@ export function tableColorNumber(number: number) {
   }
 }
 
+/**
+ * Returns a string with green color for positive and red for negative number.
+ *
+ * @param {number} number
+ */
 export function colorFromNumber(number: number) {
   if (number === null || number === undefined) {
     return '-';

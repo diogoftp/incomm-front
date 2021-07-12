@@ -4,6 +4,10 @@ import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons';
 import CardTransactions from '../../components/cardTransactions';
 import CardData from '../../components/cardData';
 
+
+/**
+ * Main page for displaying Gift Card data and transactions.
+ */
 const Info = (): JSX.Element => {
   return (
     <div className="container-wrapper">

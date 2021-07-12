@@ -5,10 +5,18 @@ import { ITransaction, TRANSACTION_TYPES, TransactionTypes } from './interfaces'
 import { tableColorNumber } from '../../utils/printStyle';
 import api from '../../services/api';
 
-const CardTransactions = (props: { origin: 'internal' | 'external' }): JSX.Element => {
+
+/**
+ * Component for displaying Gift Card transactions history.
+ */
+const CardTransactions = (props: {
+  /** Wheter to fetch data from internal or external source */
+  origin: 'internal' | 'external'
+}): JSX.Element => {
   const [loadingTransactions, setLoadingTransactions] = useState<boolean>(true);
   const [transactionsData, setTransactionsData] = useState<Array<ITransaction> | undefined>(undefined);
 
+  /** Fetch data from API when component mounts */
   useEffect(() => {
     let isMounted: boolean = true;
     let endpoint: string;
@@ -27,6 +35,7 @@ const CardTransactions = (props: { origin: 'internal' | 'external' }): JSX.Eleme
     return () => { isMounted = false }
   }, [props.origin]);
 
+  /** Table columns definition */
   const transactionsCol: ColumnsType<ITransaction> = [
     {
       title: 'Tipo da transação',

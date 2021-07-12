@@ -1,6 +1,19 @@
 import React from 'react';
 
-const CardInfos = (props: { icon: JSX.Element, title: string, text: string, color?: string }): JSX.Element => {
+
+/**
+ * Component for displaying Gift Card informations.
+ */
+const CardInfos = (props: {
+  /** Icon of the information */
+  icon: JSX.Element,
+  /** Title of the information */
+  title: string,
+  /** Text of the information */
+  text: string,
+  /** Color of the information text */
+  color?: string
+}): JSX.Element => {
   return (
     <li style={{ listStyleType: 'none' }}>
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
