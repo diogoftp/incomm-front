@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Form, Input, Button, Divider, message, Tooltip } from 'antd';
+import { Row, Col, Form, Input, Button, Divider, message, Tooltip, Typography } from 'antd';
 import { CreditCardOutlined, LockOutlined } from '@ant-design/icons';
 import api from '../../services/api';
 import { setToken } from '../../services/auth';
@@ -48,6 +48,7 @@ const Login = (props: any): JSX.Element => {
       <div className="login-container">
         <Row>
           <Col span={24}>
+            <Typography.Title level={3} style={{textAlign: 'center'}}>Meu Gift Card</Typography.Title>
             <Divider>Login</Divider>
           </Col>
           <Col span={24}>
