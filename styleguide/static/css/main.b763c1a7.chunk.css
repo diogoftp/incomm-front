@@ -1,0 +1,2 @@
+.topMenu{height:50px;background-color:#333;overflow:hidden;display:flex;flex-direction:row-reverse;align-items:center}.topMenu button{padding:25px;background:inherit;font-size:15px;border:none;cursor:pointer;font-weight:500}.topMenu button,.topMenu span{float:left;color:#f2f2f2;text-decoration:none}.topMenu span{padding:5px;font-size:20px}.topMenu button:hover{background:#ddd;color:#000}
+/*# sourceMappingURL=main.b763c1a7.chunk.css.map */
