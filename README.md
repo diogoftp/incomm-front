@@ -1,70 +1,89 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# incomm-front
+This project is the front-end of a gift card system. The back-end repository can be found [here](https://github.com/diogoftp/incomm-back).
+## Prerequisites
+* [Git](https://git-scm.com/)
+* [NodeJS](https://nodejs.org/en/) (tested with version v12.18.4)
+* [Npm](https://www.npmjs.com/) (tested with version 6.14.6)
 
-## Available Scripts
+OR
 
-In the project directory, you can run:
+* [Git](https://git-scm.com/)
+* [Docker](https://www.docker.com/) (tested with version 20.10.7)
+* [Docker-compose](https://docs.docker.com/compose/install/) (tested with version 1.25.0)
 
-### `npm start`
+##  Instructions
+### Method one: Run locally
+* Clone this repository:
+```
+git clone https://github.com/diogoftp/incomm-front.git
+```
+* Navigate to the repository folder:
+```
+cd incomm-front
+```
+* Install dependencies using npm:
+```
+npm install
+```
+* Run the development server:
+```
+npm start
+```
+* Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
+#### Optional steps:
+* To generate a production build, run:
+```
+npm run build
+```
+and serve the files in the 'build' folder with your favorite server.
+* To generate updated documentation for the components, run:
+```
+npm run doc
+```
+and open /styleguide/index.html with your browser.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Method two: Docker
+* Clone this repository:
+```
+git clone https://github.com/diogoftp/incomm-front.git
+```
+* Navigate to the repository folder:
+```
+cd incomm-front
+```
+* Build and start the container using docker-compose:
+```
+sudo docker-compose up
+```
+* (Optional) If you make any change to the project and want to rebuild the container image, run:
+```
+sudo docker-compose up --build
+```
+* Open your browser and navigate to [http://localhost:8080](http://localhost:8080)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Important note:
+You must run the [back-end](https://github.com/diogoftp/incomm-back) locally for the project to work correctly.
 
-### `npm test`
+## Design decisions
+* The project was created using [create-react-app](https://create-react-app.dev/) for faster project configuration and initialization.
+* [Typescript](https://www.typescriptlang.org/) was used as a personal challenge (first contact with typescript).
+* [Antd](https://ant.design/components/overview/) was chosen as UI library. I am already familiar with it, it helps maintain standardization of components and improves productivity. It is also actively maintained.
+* [Axios](https://github.com/axios/axios) was chosen for handling API calls because it is a modern JS ES6 library.
+* Single-quotes (') are used in Javascript parts of the code. Double-quotes(") are used in HTML parts of the code. For example:
+```
+[...]
+const cardMessage;
+if (cardData) cardMessage = cardData.message;
+else cardMessage = 'Example message';
+return (
+<Spin spinning={!cardData} size="large">
+	<CardInfos icon={<MessageOutlined style={{ fontSize: '25px', padding: '1em' }} />}  title="Mensagem do Presente" text={cardMessage}  />
+</Spin>
+);
+[...]
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Known issues
+* The API URL always points to the same domain of the front-end application, but on different port. For example, if the website URL is http://foo.com, the API URL will be http://foo.com:5002/api. This decision was made because the back-end still does not have a static address. The correct approach would be to get the API URL as and environment variable.
+* JWT token is stored in localStorage. It is known that it is safer to store it as httpOnly cookie.
